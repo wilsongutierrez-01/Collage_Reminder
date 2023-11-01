@@ -65,9 +65,16 @@
             android:text="Salir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/btnAddnote"
             android:text="Notas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnCalendario"
+            android:text="Calendario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
