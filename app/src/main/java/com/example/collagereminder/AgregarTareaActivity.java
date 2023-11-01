@@ -53,17 +53,24 @@ public class AgregarTareaActivity extends AppCompatActivity {
             if (tarea.isEmpty()) {
                 Toast.makeText(this, "Por favor, ingresa una tarea", Toast.LENGTH_SHORT).show();
             } else {
-                // Guardar la tarea en la fecha seleccionada (selectedYear, selectedMonth, selectedDay)
-                // Puedes usar un servicio o base de datos para guardar la tarea
 
-                // Marcar el día seleccionado en el CalendarView
-                calendarView.setDate(getDateInMillis(selectedYear, selectedMonth, selectedDay), true, true);
+                try {
+                    // Guardar la tarea en la fecha seleccionada (selectedYear, selectedMonth, selectedDay)
+                    // Puedes usar un servicio o base de datos para guardar la tarea
 
-                // Guardar la tarea en la fecha seleccionada en Firebase
-                guardarTareaEnFirebase(tarea);
+                    // Marcar el día seleccionado en el CalendarView
+                    calendarView.setDate(getDateInMillis(selectedYear, selectedMonth, selectedDay), true, true);
 
-                // Opcionalmente, puedes regresar a la actividad anterior
-                finish();
+                    // Guardar la tarea en la fecha seleccionada en Firebase
+                    guardarTareaEnFirebase(tarea);
+
+                    // Opcionalmente, puedes regresar a la actividad anterior
+                    finish();
+
+                }catch (Exception e){
+                    mostrarMsgToast(e.getMessage());
+                }
+
             }
         });
     }
@@ -74,7 +81,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
         return calendar.getTimeInMillis();
     }
     // Método para guardar la tarea en Firebase Realtime Database
-    private void guardarTareaEnFirebase(String tarea) {
+    private void guardarTareaEnFirebase1(String tarea) {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         final String userName = sharedPreferences.getString("userName", "");
         // Construye la ruta en la base de datos de Firebase
@@ -84,5 +91,22 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
         // Guarda la tarea
         databaseReference.child(ruta).push().setValue(tarea);
+    }
+
+    // Método para guardar la tarea en Firebase
+    private void guardarTareaEnFirebase(String tarea) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        final String userName = sharedPreferences.getString("userName", "");
+        String fechaSeleccionada = selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay;
+        String uid = userName;
+        String ruta = "Tareas/" + uid + "/" + fechaSeleccionada;
+
+        // Guardar la tarea en Firebase
+        DatabaseReference nuevaTareaRef = databaseReference.child(ruta).push();
+        nuevaTareaRef.child("contenido").setValue(tarea);
+    }
+
+    private void mostrarMsgToast(String msg){
+        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
     }
 }
