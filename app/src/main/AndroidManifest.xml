@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CollageReminder"
         tools:targetApi="31">
         <activity
+            android:name=".Estres"
+            android:exported="false" />
+        <activity
             android:name=".VerEventosActivity"
             android:exported="false" />
         <activity
