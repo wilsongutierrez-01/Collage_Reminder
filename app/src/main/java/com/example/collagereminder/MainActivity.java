@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button CerrarSesion, NuevaNota, btnCalendario;
+    Button CerrarSesion, NuevaNota, btnCalendario, btnBienestar;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
 
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         CerrarSesion = findViewById(R.id.CerrarSesion);
         NuevaNota = findViewById(R.id.btnAddnote);
         btnCalendario = findViewById(R.id.btnCalendario);
+        btnBienestar = findViewById(R.id.btnBienestar);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
 
@@ -67,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 abrirCalendario();
+
+            }
+        });
+
+        btnBienestar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirBienestar();
 
             }
         });
@@ -114,6 +123,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void abrirCalendario(){
         Intent abrirCalendario = new Intent(getApplicationContext(), Calendario.class);
+        startActivity(abrirCalendario);
+
+    }
+    private void abrirBienestar(){
+        Intent abrirCalendario = new Intent(getApplicationContext(), Estres.class);
         startActivity(abrirCalendario);
 
     }
