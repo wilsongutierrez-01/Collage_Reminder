@@ -6,28 +6,47 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".AgregarTareaActivity">
-
-    <EditText
-        android:id="@+id/editTextTarea"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ingresa una tarea"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="match_parent">
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextTarea"
-        android:layout_marginBottom="16dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonGuardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/calendarView"
-        android:text="Guardar Tarea"
-        android:layout_marginTop="16dp"/>
+            <!-- things to scroll -->
+            <EditText
+                android:id="@+id/editTextTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingresa una tarea"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextTarea"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calendarView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+            <Button
+                android:id="@+id/buttonGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/timePicker"
+                android:layout_marginTop="16dp"
+                android:text="Guardar Tarea" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

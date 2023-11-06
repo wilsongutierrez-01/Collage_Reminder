@@ -83,52 +83,9 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
         }catch (Exception e){
             mostrarMsgToast(e.getMessage());
         }
-
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        CharSequence[] items = new CharSequence[]{"Agregar tarea", "Ver evento", "Cancelar"};*/
-
-        /*builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case 0:
-                        // Agregar tarea - Puedes lanzar una actividad para agregar una tarea en esta fecha
-                        Intent agregarTareaIntent = new Intent(Calendario.this, AgregarTareaActivity.class);
-                        agregarTareaIntent.putExtra("year", year);
-                        agregarTareaIntent.putExtra("month", month);
-                        agregarTareaIntent.putExtra("day", day);
-                        startActivity(agregarTareaIntent);
-                        break;
-                    case 1:
-                        // Ver evento - Puedes mostrar los eventos para esta fecha en una actividad
-                        Intent verEventosIntent = new Intent(Calendario.this, VerEventosActivity.class);
-                        verEventosIntent.putExtra("year", year);
-                        verEventosIntent.putExtra("month", month);
-                        verEventosIntent.putExtra("day", day);
-                        startActivity(verEventosIntent);
-                        break;
-                    case 2:
-                        // Cancelar - No se hace nada
-                        break;
-                }
-            }
-        });
-
-        builder.create().show();*/
     }
 
 
-    private List<Tarea> obtenerTareasDesdeSnapshot(DataSnapshot dataSnapshot) {
-        List<Tarea> tareas = new ArrayList<>();
-
-        for (DataSnapshot tareaSnapshot : dataSnapshot.getChildren()) {
-            String contenido = tareaSnapshot.child("contenido").getValue(String.class);
-            Tarea tarea = new Tarea();
-            tareas.add(tarea);
-        }
-
-        return tareas;
-    }
     private void cargarTareasDesdeFirebase(int year, int month, int day) {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         final String userName = sharedPreferences.getString("userName", "");
@@ -163,12 +120,6 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
                     mostrarMsgToast(e.getMessage());
                 }
 
-                /*adapter.notifyDataSetChanged(); // Notifica al adaptador que los datos han cambiado
-                // Crear un adaptador personalizado para el ListView
-                TareaAdapter tareaAdapter = new TareaAdapter(getApplicationContext(), obtenerTareasDesdeSnapshot(dataSnapshot));
-
-                // Asociar el adaptador con el ListView
-                listView.setAdapter(tareaAdapter);*/
             }
 
             @Override

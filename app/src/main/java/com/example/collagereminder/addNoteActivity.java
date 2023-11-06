@@ -36,6 +36,7 @@ public class addNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
 
+
         // Inicializa la lista de notas
         listaDeNotas = new ArrayList<>();
 
@@ -85,7 +86,6 @@ public class addNoteActivity extends AppCompatActivity {
 
         try{
             // Inicializa el adaptador personalizado
-            mostrarMsgToast("Aca si entra");
             adapter = new NotaAdapter(this, listaDeNotas);
 
             // Asocia el adaptador con el ListView
