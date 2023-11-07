@@ -39,9 +39,10 @@ public class Estres extends AppCompatActivity {
     //Agregar todos los enlaces deseados
     //En el metodo de video se agregaran los titulos de videos
     String[] enlacesVideosMeditacion = {
-            "https://www.youtube.com/watch?v=Tg6CYjujgKg",
-            "https://www.youtube.com/watch?v=6p_yzMzutKk",
-            "https://www.youtube.com/watch?v=e9tqC4VCKIY",
+            "https://youtu.be/7jamzK0C4Eg?si=Amug3ENZpgJg40Nr",
+            "https://youtu.be/10siFf9RUH8?si=xbpGWS3fKQhv3JEV",
+            "https://youtu.be/d5dilTOFfSI?si=eSdtcagiyDV8TkoW",
+            "https://youtu.be/KEElZdEWz0M?si=Y_PgkiDVnnE2KpdN",
 
     };
 
@@ -119,9 +120,10 @@ public class Estres extends AppCompatActivity {
 
         // Colocar los titulos de los videos aca
         String[] titulosVideosMeditacion = {
-                "Colocar titulo de video",
-                "Colocar titulo de video",
-                "Colocar titulo de video",
+                "MENSAJE PARA REFLEXIONAR (Michael Ronda - ES POSIBLE)",
+                "Tu peor enemigo... EL MIEDO! / Psicóloga Paola Durazo",
+                "Unstoppable - Sia | Sub. español",
+                "Miley Cyrus - The Climb | En Español",
 
         };
 
