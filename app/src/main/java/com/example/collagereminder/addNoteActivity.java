@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,19 +25,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class addNoteActivity extends AppCompatActivity {
-    public String userName;
+    public String userName, userId;
     private ListView listViewTasks;
     private ArrayAdapter<Nota> adapter;
     private DatabaseReference userNotesReference;
     private List<Nota> listaDeNotas;
 
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
 
-
+        //userId = mAuth.getUid();
         // Inicializa la lista de notas
         listaDeNotas = new ArrayList<>();
 

@@ -1,99 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="16dp"
+tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/lnPrincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/imgPrincipal"
+            android:background="@drawable/app"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"/>
+        <TextView
+            android:layout_below="@+id/imgPrincipal"
+            android:id="@+id/lblSaludo"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/saludo"
+            android:textColor="@color/black"
+            android:textSize="19dp"/>
+        <TextView
+            android:id="@+id/lblrecordatorio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblSaludo"
+            android:layout_marginTop="20dp"
+            android:text="@string/recordatorio"/>
+        <TextView
+            android:id="@+id/lblrecordatorio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblrecordatorio"
+            android:text="@string/recordatorio2"/>
+    </RelativeLayout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
+        android:layout_below="@+id/lnPrincipal"
+        android:layout_marginTop="40dp"
+        android:id="@+id/lnlPrimera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:gravity="center">
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            app:cardBackgroundColor="@color/teal_700"
-            app:cardUseCompatPadding="true"
-            android:padding="0.2dp"
-            app:cardCornerRadius="5dp">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+            <ImageButton
+                android:id="@+id/btnAddnote"
+                android:background="@drawable/notas"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginRight="110dp"
+                />
+            <TextView
+                android:layout_below="@+id/btnAddnote"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Notas"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
 
-                <TextView
-                    android:text="@string/BienvenidoPrincipal"
-                    android:textColor="#fff"
-                    android:textSize="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+            <ImageButton
+                android:id="@+id/btnCalendario"
+                android:background="@drawable/calendario"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="10dp"
+                />
 
-                <TextView
-                    android:text="@string/CollageReminder"
-                    android:textColor="#fff"
-                    android:textSize="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_below="@+id/btnCalendario"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calendario"/>
 
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp">
+            <ImageButton
+                android:id="@+id/btnEstudio"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/estudio"/>
+            <TextView
+                android:layout_below="@+id/btnEstudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estudio"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
 
-                <!--NOMBRES-->
-                <TextView
-                    android:id="@+id/NombrePrincipal"
-                    android:text="@string/NombrePrincipal"
-                    android:visibility="gone"
-                    android:textColor="#fff"
-                    android:textSize="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+    </LinearLayout>
 
-
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/CerrarSesion"
-            android:text="Salir"
+    <LinearLayout
+        android:layout_below="@+id/lnlPrimera"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btnAddnote"
-            android:text="Notas"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+            <ImageButton
+                android:id="@+id/btnBienestar"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/bienestar"/>
+            <TextView
+                android:layout_below="@+id/btnBienestar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bienestar"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginLeft="50dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/btnAcerca"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/acerca"/>
+            <TextView
+                android:layout_below="@+id/btnAcerca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Acerca de"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
 
-        <Button
-            android:id="@+id/btnCalendario"
-            android:text="Calendario"
+        <RelativeLayout
+            android:layout_marginLeft="60dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btnBienestar"
-            android:text="Bienestar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/token"
-            android:text="@string/CollageReminder"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/btnSalir"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/salir"/>
+            <TextView
+                android:layout_below="@+id/btnSalir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salir"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
+    </LinearLayout>
 
 
-</ScrollView>
+
+</RelativeLayout>

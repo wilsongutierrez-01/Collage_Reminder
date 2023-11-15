@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,11 +33,11 @@ import com.onesignal.debug.LogLevel;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button CerrarSesion, NuevaNota, btnCalendario, btnBienestar;
+    ImageButton btnCalendario, NuevaNota, btnBienestar, CerrarSesion ;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
 
-    TextView NombrePrincipal, CorreoPrincipal,tokenTextView;
+    TextView saludo, CorreoPrincipal,tokenTextView;
 
 
     DatabaseReference Usuarios;
@@ -51,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        NombrePrincipal = findViewById(R.id.NombrePrincipal);
-        tokenTextView = findViewById(R.id.token);
+        saludo = findViewById(R.id.lblSaludo);
+        //tokenTextView = findViewById(R.id.token);
 
 
         Usuarios = FirebaseDatabase.getInstance().getReference("users");
-        CerrarSesion = findViewById(R.id.CerrarSesion);
+        CerrarSesion = findViewById(R.id.btnSalir);
         NuevaNota = findViewById(R.id.btnAddnote);
         btnCalendario = findViewById(R.id.btnCalendario);
         btnBienestar = findViewById(R.id.btnBienestar);
@@ -121,29 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void CargaDeDatos(){
-        Usuarios.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Si el usuario existe
-                if (snapshot.exists()){
 
-                    // Los TexView se muestran
-                    NombrePrincipal.setVisibility(View.VISIBLE);
-
-                    // Obtener los datos
-                    String nombres = "" + snapshot.child("name").getValue();
-
-                    // Setear los datos en los respectivos TexView
-                    NombrePrincipal.setText(nombres);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
 
     private void SalirAplicacion() {
         firebaseAuth.signOut();
