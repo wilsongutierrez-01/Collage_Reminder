@@ -8,6 +8,14 @@
     android:gravity="center"
     tools:context=".Registro">
 
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icono"
+        android:scaleType="center"
+        android:layout_margin="20dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
