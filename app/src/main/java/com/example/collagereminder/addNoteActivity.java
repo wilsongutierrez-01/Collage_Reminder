@@ -22,7 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class addNoteActivity extends AppCompatActivity {
     public String userName, userId;
@@ -33,12 +35,91 @@ public class addNoteActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://collage-reminder-32e34-default-rtdb.firebaseio.com/");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
+        ///Para base de datos
+        try {
+            cargarDatos();
+        }catch (Exception e){
+            mostrarMsgToast(e.getMessage()   );
+        }
 
+        try {
+            //Variable for user
+            final String user;
+            //cargar boton para agregar notas
+            final Button btnNota = findViewById(R.id.btnAddnote);
+
+            //agregar la base de datos
+
+            //Cargamos el text de tarea
+            final EditText nota = findViewById(R.id.editTextTask);
+
+            final EditText title = findViewById(R.id.editTextTitle);
+
+            btnNota.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                    userName = sharedPreferences.getString("userName", "");
+                    final String tituloNota = title.getText().toString();
+                    final String nuevaNota = nota.getText().toString();
+
+                    databaseReference.child("nuevasNotas").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            try {
+
+                                DatabaseReference userNotesReference = databaseReference.child("nuevasNotas").child(userName).child("Notas");
+                                String notaKey = userNotesReference.push().getKey();
+
+                                if (notaKey != null) {
+                                    // Guarda la nueva nota con la clave generada en el nodo "notas"
+                                    Map<String,String> data = new HashMap<>();
+                                    data.put("titulo", tituloNota);
+                                    data.put("tarea", nuevaNota);
+
+                                    userNotesReference.child(notaKey).setValue(data);
+                                    mostrarMsgToast("Nota agregada");
+                                } else {
+                                    mostrarMsgToast("Error al agregar la nota");
+                                }
+
+                            }catch (Exception e){
+                                mostrarMsgToast(e.getMessage());
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
+            });
+
+
+        }catch (Exception e){
+            mostrarMsgToast("error en cargar componentes");
+        }
+
+
+    }
+    private void mostrarMsgToast(String msg){
+        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
+    }
+
+    private void cargarDatos (){
         //userId = mAuth.getUid();
+
         // Inicializa la lista de notas
         listaDeNotas = new ArrayList<>();
 
@@ -46,7 +127,6 @@ public class addNoteActivity extends AppCompatActivity {
         listViewTasks = findViewById(R.id.listViewTasks);
 
         // Obtiene una referencia a la base de datos de Firebase
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://collage-reminder-32e34-default-rtdb.firebaseio.com/");
 
         // Obtiene el nombre de usuario
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -63,13 +143,19 @@ public class addNoteActivity extends AppCompatActivity {
                     listaDeNotas.clear(); // Limpia la lista antes de cargar las notas
                     for (DataSnapshot noteSnapshot : dataSnapshot.getChildren()) {
 
-                            String noteText = noteSnapshot.getValue(String.class);
+                        Map<String, String> notaData = (Map<String, String>) noteSnapshot.getValue();
+
+
+
+                        if (notaData != null) {
+                            String titulo = notaData.get("titulo");
+                            String notaContenido = notaData.get("tarea");
 
                             Nota nota = new Nota();
-                            nota.setContent(noteText);
+                            nota.setTitle(titulo);
+                            nota.setContent(notaContenido);
                             listaDeNotas.add(nota);
-
-
+                        }
 
                     }
                     adapter.notifyDataSetChanged(); // Notifica al adaptador que los datos han cambiado
@@ -96,68 +182,7 @@ public class addNoteActivity extends AppCompatActivity {
         }catch (Exception e){
             mostrarMsgToast(e.getMessage());
         }
-
-
-
-
-
-        //Variable for user
-        final String user;
-        //cargar boton para agregar notas
-        final Button btnNota = findViewById(R.id.btnAddnote);
-
-        //agregar la base de datos
-
-        //Cargamos el text de tarea
-        final EditText nota = findViewById(R.id.editTextTask);
-
-
-        btnNota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                userName = sharedPreferences.getString("userName", "");
-                final String nuevaNota = nota.getText().toString();
-
-                    databaseReference.child("nuevasNotas").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            try {
-
-                                DatabaseReference userNotesReference = databaseReference.child("nuevasNotas").child(userName).child("Notas");
-                                String notaKey = userNotesReference.push().getKey();
-
-                                if (notaKey != null) {
-                                    // Guarda la nueva nota con la clave generada en el nodo "notas"
-                                    userNotesReference.child(notaKey).setValue(nuevaNota);
-                                    mostrarMsgToast("Nota agregada");
-                                } else {
-                                    mostrarMsgToast("Error al agregar la nota");
-                                }
-
-                            }catch (Exception e){
-                                mostrarMsgToast(e.getMessage());
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-            }
-        });
     }
-    private void mostrarMsgToast(String msg){
-        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
-    }
-
-
-
 
 
 }

@@ -10,16 +10,22 @@
 
 
     <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titulo"/>
+    <EditText
         android:id="@+id/editTextTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nueva tarea" />
+        android:hint="Tarea" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agregar"
-        android:id="@+id/btnAddnote" />
+        android:id="@+id/btnAddnote"
+        android:layout_marginLeft="120dp"/>
 
     <ListView
         android:id="@+id/listViewTasks"

@@ -25,6 +25,7 @@ tools:context=".MainActivity">
             android:layout_height="wrap_content"
             android:text="@string/saludo"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="19dp"/>
         <TextView
             android:id="@+id/lblrecordatorio"

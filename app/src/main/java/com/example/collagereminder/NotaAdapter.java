@@ -37,9 +37,10 @@ public class NotaAdapter extends ArrayAdapter<Nota> {
         }
 
         Nota nota = getItem(position);
+        Nota titulo = getItem(position);
 
         if (nota != null) {
-            viewHolder.textViewTitle.setText("Reminder");
+            viewHolder.textViewTitle.setText(nota.getTitle());
             viewHolder.textViewContent.setText(nota.getContent());
         }
 
