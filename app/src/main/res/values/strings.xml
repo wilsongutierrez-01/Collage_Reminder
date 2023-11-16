@@ -9,7 +9,8 @@
     <string name="saludo">Hola, bienvenido a College Reminder</string>
     <string name="default_notification_channel_id">tu_canal_de_notificaciones</string>
     <string name="msg_token_fmt">Token de registro de FCM: %1$s</string>
-    <string name="recordatorio">Recuerda tratarte con mucho cariño, hacer pausas de descanso y continuar;</string>
+    <string name="recordatorio">Recuerda tratarte con mucho cariño, hacer pausas de descanso y continuar; te ayudamos a organizarte para
+                                que logres tus tareas diarias. Ánimo</string>
 
     <string name="recordatorio2"> te ayudamos a organizarte para que logres tus tareas diarias. Ánimo</string>
 

@@ -8,6 +8,7 @@ android:padding="16dp"
 tools:context=".MainActivity">
 
     <RelativeLayout
+        android:layout_marginTop="50dp"
         android:id="@+id/lnPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -27,24 +28,22 @@ tools:context=".MainActivity">
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="19dp"/>
+
         <TextView
             android:id="@+id/lblrecordatorio"
-            android:layout_width="wrap_content"
+            android:layout_width="335dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblSaludo"
             android:layout_marginTop="20dp"
-            android:text="@string/recordatorio"/>
-        <TextView
-            android:id="@+id/lblrecordatorio2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lblrecordatorio"
-            android:text="@string/recordatorio2"/>
+            android:text="@string/recordatorio"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"/>
+
     </RelativeLayout>
 
     <LinearLayout
         android:layout_below="@+id/lnPrincipal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/lnlPrimera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +67,8 @@ tools:context=".MainActivity">
                 android:layout_height="wrap_content"
                 android:text="Notas"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -89,7 +89,8 @@ tools:context=".MainActivity">
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calendario"/>
+                android:text="Calendario"
+                android:textStyle="bold"/>
 
         </RelativeLayout>
 
@@ -108,7 +109,8 @@ tools:context=".MainActivity">
                 android:layout_height="wrap_content"
                 android:text="Estudio"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="18dp"
+                android:textStyle="bold"/>
         </RelativeLayout>
 
     </LinearLayout>
@@ -133,7 +135,8 @@ tools:context=".MainActivity">
                 android:layout_height="wrap_content"
                 android:text="Bienestar"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_marginLeft="50dp"
@@ -143,14 +146,16 @@ tools:context=".MainActivity">
                 android:id="@+id/btnAcerca"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="@drawable/acerca"/>
+                android:background="@drawable/acerca"
+                android:layout_marginLeft="20dp"/>
             <TextView
                 android:layout_below="@+id/btnAcerca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Acerca de"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -161,14 +166,16 @@ tools:context=".MainActivity">
                 android:id="@+id/btnSalir"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="@drawable/salir"/>
+                android:background="@drawable/salir"
+                />
             <TextView
                 android:layout_below="@+id/btnSalir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Salir"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"/>
         </RelativeLayout>
     </LinearLayout>
 
