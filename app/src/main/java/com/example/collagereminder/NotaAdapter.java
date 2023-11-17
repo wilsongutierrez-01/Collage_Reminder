@@ -47,7 +47,7 @@ public class NotaAdapter extends ArrayAdapter<Nota> {
         return convertView;
     }
 
-    private static class ViewHolder {
+    static class ViewHolder {
         TextView textViewTitle;
         TextView textViewContent;
     }

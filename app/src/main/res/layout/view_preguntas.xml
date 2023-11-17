@@ -1,0 +1,31 @@
+<!-- res/layout/item_card.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/card_background">
+
+    <!-- Puedes personalizar los elementos dentro de la tarjeta, como TextView, ImageView, etc. -->
+    <TextView
+        android:id="@+id/txtPreguntaView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Título de la tarjeta"
+        android:textSize="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <TextView
+        android:id="@+id/txtRespuestaView"
+        android:layout_below="@+id/txtPreguntaView"
+        android:text="Respuesta de la tarjeta"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Agrega más elementos según sea necesario -->
+
+</RelativeLayout>

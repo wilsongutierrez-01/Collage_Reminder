@@ -189,10 +189,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void abrirEstudio (){
-        Intent estudio = new Intent(getApplicationContext(), PreguntasActivity.class);
-        startActivity(estudio);
+        try {
+            Intent estudio = new Intent(getApplicationContext(), VerPreguntas.class);
+            startActivity(estudio);
+        }catch (Exception e){
+            mostrarMsgToast(e.getMessage());
+        }
+
     }
 
 
-
+    private void mostrarMsgToast(String msg){
+        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
+    }
 }
