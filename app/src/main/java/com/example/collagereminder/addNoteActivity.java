@@ -76,7 +76,7 @@ public class addNoteActivity extends AppCompatActivity {
 
                             try {
 
-                                DatabaseReference userNotesReference = databaseReference.child("nuevasNotas").child(userName).child("Notas");
+                                DatabaseReference userNotesReference = databaseReference.child("nuevasNotas").child(userName);
                                 String notaKey = userNotesReference.push().getKey();
 
                                 if (notaKey != null) {
@@ -133,7 +133,7 @@ public class addNoteActivity extends AppCompatActivity {
         userName = sharedPreferences.getString("userName", "");
 
         // Obtiene una referencia a la ubicación de las notas del usuario en Firebase
-        userNotesReference = databaseReference.child("nuevasNotas").child(userName).child("Notas");
+        userNotesReference = databaseReference.child("nuevasNotas").child(userName);
 
         try {
             // Agrega un escuchador de eventos para cargar las notas desde Firebase

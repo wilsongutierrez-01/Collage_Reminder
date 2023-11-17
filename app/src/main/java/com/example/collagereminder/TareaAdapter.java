@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class TareaAdapter extends ArrayAdapter<Tarea> {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_tarea, parent, false);
             viewHolder = new ViewHolder();
+            viewHolder.nivelView = convertView.findViewById(R.id.btnAlert);
             viewHolder.textViewContenido = convertView.findViewById(R.id.textViewContenido);
             convertView.setTag(viewHolder);
         } else {
@@ -34,8 +36,21 @@ public class TareaAdapter extends ArrayAdapter<Tarea> {
 
         Tarea tarea = getItem(position);
 
+
+
         if (tarea != null) {
             viewHolder.textViewContenido.setText(tarea.getContenido());
+            if ("amarillo".equals(tarea.getNivel())){
+                viewHolder.nivelView.setImageResource(R.drawable.amarillo);
+            } else if ("verde".equals(tarea.getNivel())) {
+                viewHolder.nivelView.setImageResource(R.drawable.verde);
+
+            } else if ("rojo".equals(tarea.getNivel())) {
+                viewHolder.nivelView.setImageResource(R.drawable.rojo);
+
+            }else {
+                viewHolder.nivelView.setImageResource(R.drawable.azul);
+            }
         }
 
         return convertView;
@@ -43,5 +58,6 @@ public class TareaAdapter extends ArrayAdapter<Tarea> {
 
     private static class ViewHolder {
         TextView textViewContenido;
+        ImageView nivelView;
     }
 }

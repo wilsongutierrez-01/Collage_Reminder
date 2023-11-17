@@ -23,6 +23,14 @@
                 android:hint="Ingresa una tarea"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp" />
+            <EditText
+                android:id="@+id/editTextNivel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint='"azul", "amarillo", "verde", "rojo"'
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+
             <CalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
@@ -30,19 +38,13 @@
                 android:layout_below="@id/editTextTarea"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp" />
-            <TimePicker
-                android:id="@+id/timePicker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/calendarView"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp" />
+
             <Button
                 android:id="@+id/buttonGuardar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/timePicker"
+                android:layout_below="@id/calendarView"
                 android:layout_marginTop="16dp"
                 android:text="Guardar Tarea" />
         </LinearLayout>

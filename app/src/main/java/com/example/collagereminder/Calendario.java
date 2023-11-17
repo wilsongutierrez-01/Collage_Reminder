@@ -3,6 +3,7 @@ package com.example.collagereminder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,8 +20,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 public class Calendario extends AppCompatActivity implements CalendarView.OnDateChangeListener {
 
@@ -31,16 +35,18 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
 
     private List<Tarea> listaDeTareas;
 
-     Button btnNuevatarea;
+    Button btnNuevatarea;
 
 
-    private int selectedYear, selectedMonth, selectedDay;
     private DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
+
+
 
         btnNuevatarea = findViewById(R.id.btnAddTarea);
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://collage-reminder-32e34-default-rtdb.firebaseio.com/");
@@ -101,11 +107,28 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
                     listaDeTareas.clear(); // Limpia la lista antes de cargar las notas
                     for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
                         for (DataSnapshot taskSnapshot : dateSnapshot.getChildren()){
-                            String taskContent = taskSnapshot.getValue(String.class);
+                            Map<String, String> taskData = (Map<String, String>)taskSnapshot.getValue();
+                            //String taskContent = taskSnapshot.getValue(String.class);
 
-                            Tarea tarea = new Tarea();
+                            try {
+                                if (taskData != null) {
+                                    String nivel = taskData.get("nivel");
+                                    String tarea = taskData.get("tarea");
+
+                                    Tarea tareas = new Tarea();
+                                    tareas.setContenido(tarea);
+                                    tareas.setNivel(nivel);
+                                    listaDeTareas.add(tareas);
+
+                                }
+                            }catch (Exception e){
+                                mostrarMsgToast(e.getMessage());
+                            }
+
+
+                            /*Tarea tarea = new Tarea();
                             tarea.setContenido(taskContent);
-                            listaDeTareas.add(tarea);
+                            listaDeTareas.add(tarea);*/
 
                         }
 

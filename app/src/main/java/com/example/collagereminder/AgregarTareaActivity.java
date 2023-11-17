@@ -2,6 +2,7 @@ package com.example.collagereminder;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -28,7 +29,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
     private int selectedYear, selectedMonth, selectedDay, selectedHour, selectedMinute;
 
 
-    private EditText tareaEditText;
+    private EditText tareaEditText ,nivelEditTxt;
     private CalendarView calendarView;
     private TimePicker timePicker;
     private Button guardarButton;
@@ -37,6 +38,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
     // Referencia a la base de datos de Firebase
     private DatabaseReference databaseReference;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +51,8 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
 
         tareaEditText = findViewById(R.id.editTextTarea);
+        nivelEditTxt = findViewById(R.id.editTextNivel);
         calendarView = findViewById(R.id.calendarView);
-        timePicker = findViewById(R.id.timePicker);
         guardarButton = findViewById(R.id.buttonGuardar);
 
         // Inicializa la referencia a la base de datos de Firebase
@@ -80,6 +82,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
         guardarButton.setOnClickListener(v -> {
             String tarea = tareaEditText.getText().toString();
+            String nivel = nivelEditTxt.getText().toString();
 
             if (tarea.isEmpty()) {
                 Toast.makeText(this, "Por favor, ingresa una tarea", Toast.LENGTH_SHORT).show();
@@ -93,16 +96,34 @@ public class AgregarTareaActivity extends AppCompatActivity {
                     long dateTimeInMillis = getDateInMillis(selectedYear, selectedMonth, selectedDay, selectedHour, selectedMinute);
                     long timeStap = getTimestamp(selectedYear,selectedMonth,selectedDay,selectedHour,selectedMinute);
                     // Guardar la tarea en la fecha seleccionada en Firebase
-                    guardarTareaEnFirebase(tarea);
 
                     try {
+                        Map<String, String> tareas = new HashMap<>();
+                        tareas.put("tarea", tarea);
+                        tareas.put("nivel", nivel);
+                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        final String userName = sharedPreferences.getString("userName", "");
+                        String fechaSeleccionada = selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay;
+                        String uid = userName;
+                        String ruta = "Tareas/" + uid + "/" + fechaSeleccionada;
+
+                        // Guardar la tarea en Firebase
+                        DatabaseReference nuevaTareaRef = databaseReference.child(ruta).push();
+                        nuevaTareaRef.child("contenido").setValue(tareas);
+
+                    }catch (Exception e){
+                        mostrarMsgToast(e.getMessage());
+                    }
+
+
+                    /*try {
                         Map<String, String> data = new HashMap<>();
                         data.put("tarea", String.valueOf(timeStap));
                         OneSignal.getUser().addTags(data);
                         mostrarMsgToast(String.valueOf(timeStap));
                     }catch (Exception e){
                         mostrarMsgToast(e.getMessage());
-                    }
+                    }*/
 
                     // Opcionalmente, puedes regresar a la actividad anterior
                     finish();
@@ -122,7 +143,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
     }
 
     // Método para guardar la tarea en Firebase
-    private void guardarTareaEnFirebase(String tarea) {
+    private void guardarTareaEnFirebase(HashMap<String, String> tarea) {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         final String userName = sharedPreferences.getString("userName", "");
         String fechaSeleccionada = selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay;
