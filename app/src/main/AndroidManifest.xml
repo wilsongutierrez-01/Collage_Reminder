@@ -53,6 +53,9 @@
             android:exported="false"/>
         <activity android:name=".VerPreguntas"
             android:exported="false"/>
+
+        <activity android:name=".AcercaDeActivity"
+            android:exported="false"/>
         <activity
             android:name=".Login"
             android:exported="true">

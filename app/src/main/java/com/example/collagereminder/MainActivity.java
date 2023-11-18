@@ -35,7 +35,7 @@ import com.onesignal.debug.LogLevel;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton btnCalendario, NuevaNota, btnBienestar, CerrarSesion, btnEstudio ;
+    ImageButton btnCalendario, NuevaNota, btnBienestar, CerrarSesion, btnEstudio, btnAcercaDe ;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
 
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         btnCalendario = findViewById(R.id.btnCalendario);
         btnBienestar = findViewById(R.id.btnBienestar);
         btnEstudio = findViewById(R.id.btnEstudio);
+        btnAcercaDe = findViewById(R.id.btnAcerca);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
 
@@ -128,6 +129,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnAcercaDe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirAcercaDe();
+
+
+            }
+        });
         btnEstudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -195,6 +204,12 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             mostrarMsgToast(e.getMessage());
         }
+
+    }
+    private void abrirAcercaDe(){
+
+        Intent abrirAcercaDe = new Intent(getApplicationContext(), AcercaDeActivity.class);
+        startActivity(abrirAcercaDe);
 
     }
 

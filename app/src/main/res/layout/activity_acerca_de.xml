@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".AcercaDeActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearTop"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="#B4B4B3">
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Sobre nosotros..."
+            android:textStyle="bold"
+            android:textSize="30dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/linearMision"
+        android:layout_below="@id/linearTop"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0F4FF">
+        <TextView
+            android:id="@+id/lblMision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Misión"
+            android:textStyle="bold"
+            android:textSize="30dp"/>
+        <TextView
+            android:layout_below="@+id/lblMision"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="@string/mision"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearContacto"
+        android:layout_below="@+id/linearMision"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:textAlignment="center">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:background="#9BBEC8">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contáctanos"
+                android:textStyle="bold"
+                android:textSize="30dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearFotos"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/linearContacto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+            <ImageView
+                android:id="@+id/picChepe"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/chepe"/>
+            <TextView
+                android:id="@+id/lblNombreChepe"
+                android:layout_below="@+id/picChepe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alexander Mejía"/>
+            <TextView
+                android:id="@+id/numChepe"
+                android:layout_below="@+id/lblNombreChepe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+503 7009-8586"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+            <ImageView
+                android:id="@+id/picCarla"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/carla"/>
+            <TextView
+                android:id="@+id/lblNombreCarla"
+                android:layout_below="@+id/picCarla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daniela Esperanza"/>
+            <TextView
+                android:id="@+id/numCarla"
+                android:layout_below="@+id/lblNombreCarla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+503 7210-4292"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <ImageView
+                android:id="@+id/picJuan"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/juan"/>
+            <TextView
+                android:id="@+id/lblNombreJuan"
+                android:layout_below="@+id/picJuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juan Martínez"/>
+            <TextView
+                android:id="@+id/numJuan"
+                android:layout_below="@+id/lblNombreJuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+503 6079-8245"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/linearSoporte"
+        android:layout_below="@+id/linearFotos"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0F4FF">
+        <TextView
+            android:id="@+id/lblSoporte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:text="@string/soporte"/>
+        <TextView
+            android:layout_below="@+id/lblSoporte"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equipo"
+            android:textSize="15dp"
+            android:layout_marginLeft="50dp"/>
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/linearFinal"
+        android:layout_below="@+id/linearSoporte"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="#9BBEC8">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:text="¡Gracias por elegir nuestra aplicación!"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/icono"/>
+
+    </LinearLayout>
+</RelativeLayout>
+
+</LinearLayout>

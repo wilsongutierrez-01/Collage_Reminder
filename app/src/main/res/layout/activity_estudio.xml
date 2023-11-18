@@ -23,6 +23,7 @@
         android:id="@+id/btnAddTarjeta"
         android:layout_below="@+id/lblTituloPreguntas"
         android:layout_marginTop="10dp"
+        android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agregar"
@@ -33,7 +34,9 @@
         android:layout_below="@+id/btnAddTarjeta"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"/>
 
 </RelativeLayout>
 

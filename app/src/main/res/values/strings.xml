@@ -12,8 +12,14 @@
     <string name="recordatorio">Recuerda tratarte con mucho cariño, hacer pausas de descanso y continuar; te ayudamos a organizarte para
                                 que logres tus tareas diarias. Ánimo</string>
 
-    <string name="recordatorio2"> te ayudamos a organizarte para que logres tus tareas diarias. Ánimo</string>
+    <string name="mision">Ofrecer una herramienta que se adapte a las necesidades de los estudiantes universitarios. Nuestra
+                            aplicación tiene como objetivo principal facilitar la organización y mejorar la eficencia en la
+                            gestión de tareas y responsabilidades.</string>
 
+    <string name="soporte">Queremos brindar un soporte personalizado y rápido. Proporcionando nuestro número telefónico, te ofrecemos la posibilidad de
+                            comunicarte directamente con nuestro equipo de soporte para recibir atención inmediata</string>
+
+    <string name="equipo">El equipo de soporte de College Reminder</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>

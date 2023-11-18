@@ -80,13 +80,19 @@ public class addNoteActivity extends AppCompatActivity {
                                 String notaKey = userNotesReference.push().getKey();
 
                                 if (notaKey != null) {
-                                    // Guarda la nueva nota con la clave generada en el nodo "notas"
-                                    Map<String,String> data = new HashMap<>();
-                                    data.put("titulo", tituloNota);
-                                    data.put("tarea", nuevaNota);
 
-                                    userNotesReference.child(notaKey).setValue(data);
-                                    mostrarMsgToast("Nota agregada");
+                                    if(!tituloNota.isEmpty() && !nuevaNota.isEmpty()){
+                                        // Guarda la nueva nota con la clave generada en el nodo "notas"
+                                        Map<String,String> data = new HashMap<>();
+                                        data.put("titulo", tituloNota);
+                                        data.put("tarea", nuevaNota);
+
+                                        userNotesReference.child(notaKey).setValue(data);
+                                        mostrarMsgToast("Nota agregada");
+                                    }else {
+                                        mostrarMsgToast("Por favor ingrese datos");
+                                    }
+
                                 } else {
                                     mostrarMsgToast("Error al agregar la nota");
                                 }
