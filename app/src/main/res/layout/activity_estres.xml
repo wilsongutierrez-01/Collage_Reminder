@@ -7,59 +7,243 @@
     android:orientation="vertical"
     tools:context=".Estres">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="#CC000000"
-        android:textSize="25sp"
-        android:text="Tu guía de Salud y Bienestar"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/linearTop"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="315dp"
+                android:layout_height="50dp"
+                android:background="#B4B4B3">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="-Tu guia de salud y bienestar-"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="#CC000000"
-        android:textSize="24sp"
-        android:text="Encuentra enlaces a videos que te ofrecen técnicas de relajación y más."/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/corabienestar"/>
+            </RelativeLayout>
 
+        </LinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/linearCrecer"
+            android:layout_below="@id/linearTop"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E0F4FF">
+            <TextView
+                android:id="@+id/lblCreer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="@string/creer"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_below="@+id/lblCreer"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:text="@string/encontrar"/>
 
-    <Button
-        android:id="@+id/buttonConsejos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/buttonConsejos"
-        android:text="Consejos"
-        android:layout_marginTop="26dp"/>
-    <Button
-        android:id="@+id/buttonFrases"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/buttonFrases"
-        android:text="Frases"
-        android:layout_marginTop="25dp"/>
-    <Button
-        android:id="@+id/buttonEnlacesavideos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/buttonEnlacesavideos"
-        android:text="Enlaces a Videos"
-        android:layout_marginTop="25dp"/>
+        </RelativeLayout>
+        
+        <LinearLayout
+            android:id="@+id/linearBotones"
+            android:layout_below="@+id/linearCrecer"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblConsejosb"
+                    android:layout_width="180dp"
+                    android:layout_height="35dp"
+                    android:text="            Consejos"
+                    android:background="#9BBEC8"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/lblEstres"
+                    android:layout_below="@+id/lblConsejosb"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:text="                 Estrés"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/lblTranstorno"
+                    android:layout_below="@+id/lblEstres"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:text="   Transtorno alimenticio"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/lblAnsiedad"
+                    android:layout_below="@+id/lblTranstorno"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:text="               Ansiedad"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
 
-    <ImageView
-        android:layout_marginTop="25dp"
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="168dp"
-        app:srcCompat="@mipmap/imageen" />
+                <TextView
+                    android:id="@+id/lblSoledad"
+                    android:layout_below="@+id/lblAnsiedad"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:text="                 Soledad"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/lblAmorPropio"
+                    android:layout_below="@+id/lblSoledad"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:text="            Amor propio"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblFrasesb"
+                    android:layout_width="300dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="35dp"
+                    android:background="#9BBEC8"
+                    android:text="      Frases"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/lblMotivacion"
+                    android:layout_below="@+id/lblFrasesb"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="300dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="30dp"
+                    android:text="            Motivación"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/lblCargaAcademica"
+                    android:layout_below="@+id/lblMotivacion"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="300dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="30dp"
+                    android:text="      Carga Académica"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/lblProblemasPersonales"
+                    android:layout_below="@+id/lblCargaAcademica"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="300dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="30dp"
+                    android:text=" Problemas personales"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/lblProblemasFamiliares"
+                    android:layout_below="@+id/lblProblemasPersonales"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="300dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="30dp"
+                    android:text="Problemas familiares"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/lblRelacionesIntra"
+                    android:layout_below="@+id/lblProblemasFamiliares"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="300dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="30dp"
+                    android:text="Relaciones interpersonales"
+                    android:background="#E0F4FF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearVideo"
+            android:layout_below="@+id/linearBotones"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/lblVideos"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="     Videos"
+                android:textSize="30dp"
+                android:layout_marginLeft="145dp"
+                android:background="#9BBEC8"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/linearVideo"
+            android:layout_marginTop="30dp"
+            android:background="#B4B4B3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/consejofinal"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+        
+        
+    </RelativeLayout>
 
 
 </LinearLayout>

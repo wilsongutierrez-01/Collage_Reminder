@@ -20,6 +20,17 @@
                             comunicarte directamente con nuestro equipo de soporte para recibir atención inmediata</string>
 
     <string name="equipo">El equipo de soporte de College Reminder</string>
+
+    <!--PARA BIENESTAR -->
+
+    <string name="creer">Cree en ti mismo y serás imparable.</string>
+    <string name="encontrar">Encuentra consejos, frases y enlaces a videos que te ayudan a afrontar un mal día. Sigue adelante</string>
+    <string name="consejofinal">Recuerda que puedes con todo, pero también es importante buscar ayuda. Siempre hay una solución,
+                                no dejes que un mal dia te haga creer que tienes una mala vida. Las pruebas son temporales, siempre
+                                vuelve a salir el sol.</string>
+
+
+    <!--**********************************************-->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
