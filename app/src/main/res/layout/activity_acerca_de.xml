@@ -26,7 +26,7 @@
             android:layout_marginLeft="15dp"
             android:text="Sobre nosotros..."
             android:textStyle="bold"
-            android:textSize="30dp"/>
+            android:textSize="20dp"/>
 
     </LinearLayout>
 
@@ -44,7 +44,7 @@
             android:layout_marginLeft="15dp"
             android:text="Misión"
             android:textStyle="bold"
-            android:textSize="30dp"/>
+            android:textSize="20dp"/>
         <TextView
             android:layout_below="@+id/lblMision"
             android:layout_marginTop="10dp"
@@ -67,14 +67,14 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="150dp"
             android:background="#9BBEC8">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Contáctanos"
                 android:textStyle="bold"
-                android:textSize="30dp"/>
+                android:textSize="20dp"/>
         </RelativeLayout>
 
     </LinearLayout>

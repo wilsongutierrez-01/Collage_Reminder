@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="Aprende mas aqui:"
         android:textColor="@color/white"
-        android:background="#5b39c6"/>
+        android:background="#9BBEC8"/>
 
     <ListView
         android:id="@+id/listViewVideos"

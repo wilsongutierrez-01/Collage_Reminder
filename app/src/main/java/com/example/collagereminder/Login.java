@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +33,8 @@ public class Login extends AppCompatActivity {
     private Button btnLogin;
     private TextView registerNowBtn;
     private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference, userReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class Login extends AppCompatActivity {
         //obtenemos el usuario desde Firebase
         mAuth = FirebaseAuth.getInstance();
 
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://collage-reminder-32e34-default-rtdb.firebaseio.com/");
 
 
         txtEmail = findViewById(R.id.txtEmail);
@@ -53,58 +57,6 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 login();
 
-
-
-
-
-               /* mailUser = email.getText().toString();
-                final String emailPath = mailUser.replace(".", "_");
-                final String userName = user.getText().toString();
-                final String passwordTxt = password.getText().toString();
-
-                if (mailUser.isEmpty() || passwordTxt.isEmpty()){
-                    Toast.makeText(Login.this, "Por favor ingresa tus datos", Toast.LENGTH_SHORT).show();
-                }
-                else {
-
-                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            // Verificar si el usuario existe en la base de datos
-                            if (snapshot.hasChild(emailPath)){
-
-                                // Usuario existe
-                                // Obtnemos la contraseña del usuario de la base de datos y la combinamos con la contraseña ingresada por el usuario
-                                final String getPassword = snapshot.child(emailPath).child("password").getValue(String.class);
-
-                                if (getPassword.equals(passwordTxt)){
-                                    Toast.makeText(Login.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-
-                                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("userMail", mailUser);
-                                    editor.putString("userName", userName);
-                                    editor.apply();
-
-                                    startActivity(new Intent(Login.this, MainActivity.class));
-                                    finish();
-                                }
-                                else {
-                                    Toast.makeText(Login.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            else {
-                                Toast.makeText(Login.this, "Usuario no existente", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }*/
             }
         });
 
@@ -117,6 +69,8 @@ public class Login extends AppCompatActivity {
 
 
     }
+
+
     private void login (){
         String email = txtEmail.getText().toString();
         String password = txtPassword.getText().toString();

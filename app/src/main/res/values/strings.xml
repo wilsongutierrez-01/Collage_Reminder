@@ -31,6 +31,18 @@
 
 
     <!--**********************************************-->
+
+    <!-- Array de colores -->
+    <string-array name="colors_array">
+        <item>amarillo</item>
+        <item>azul</item>
+        <item>verde</item>
+        <item>rojo</item>
+    </string-array>
+    <!-- Prompt para seleccionar un color -->
+    <string name="select_color_prompt">Selecciona un nivel</string>
+
+
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>

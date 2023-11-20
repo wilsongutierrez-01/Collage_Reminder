@@ -12,11 +12,11 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="306dp"
+        android:layout_marginBottom="1dp"/>
     <LinearLayout
         android:layout_below="@+id/calendarView"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="1dp"
         android:id="@+id/cuadrados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,9 +30,9 @@
             <ImageView
                 android:id="@+id/rojo"
                 android:background="@drawable/rojo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="12dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,11 +45,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:id="@+id/verde"
                 android:background="@drawable/verde"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="16dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,11 +61,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:id="@+id/amarillo"
                 android:background="@drawable/amarillo"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="16dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,9 +77,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:id="@+id/azul"
+                android:layout_marginLeft="16dp"
                 android:background="@drawable/azul"/>
             <TextView
                 android:layout_width="wrap_content"

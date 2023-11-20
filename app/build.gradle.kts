@@ -57,6 +57,10 @@ dependencies {
     implementation("com.onesignal:OneSignal:5.0.0")
 
     implementation("com.onesignal:OneSignal:3.19.6")
+    implementation("com.onesignal:OneSignal:[5.0.0, 5.99.99]")
+
+
+
 
 
 

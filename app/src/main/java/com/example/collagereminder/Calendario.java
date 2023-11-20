@@ -47,7 +47,6 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
         setContentView(R.layout.activity_calendario);
 
 
-
         btnNuevatarea = findViewById(R.id.btnAddTarea);
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://collage-reminder-32e34-default-rtdb.firebaseio.com/");
         listView = findViewById(R.id.listViewTasks);
@@ -70,7 +69,6 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
 
             }
         });
-
     }
 
     @Override
@@ -91,8 +89,17 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Calendar c = Calendar.getInstance();
+        int y = c.get(Calendar.YEAR);
+        int m = c.get(Calendar.MONTH);
+        int d = c.get(Calendar.DAY_OF_MONTH);
+        cargarTareasDesdeFirebase(y,m,d);
+    }
 
-    private void cargarTareasDesdeFirebase(int year, int month, int day) {
+    public void cargarTareasDesdeFirebase(int year, int month, int day) {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         final String userName = sharedPreferences.getString("userName", "");
         String fechaSeleccionada = year + "-" + (month + 1) + "-" + day;
@@ -106,8 +113,8 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
                 try {
                     listaDeTareas.clear(); // Limpia la lista antes de cargar las notas
                     for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
-                        for (DataSnapshot taskSnapshot : dateSnapshot.getChildren()){
-                            Map<String, String> taskData = (Map<String, String>)taskSnapshot.getValue();
+
+                            Map<String, String> taskData = (Map<String, String>)dateSnapshot.getValue();
                             //String taskContent = taskSnapshot.getValue(String.class);
 
                             try {
@@ -125,12 +132,6 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
                                 mostrarMsgToast(e.getMessage());
                             }
 
-
-                            /*Tarea tarea = new Tarea();
-                            tarea.setContenido(taskContent);
-                            listaDeTareas.add(tarea);*/
-
-                        }
 
                     }
 

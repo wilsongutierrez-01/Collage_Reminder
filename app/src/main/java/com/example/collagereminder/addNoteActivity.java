@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +38,7 @@ public class addNoteActivity extends AppCompatActivity {
     private List<Nota> listaDeNotas;
 
     private FirebaseAuth mAuth;
+    Cursor datosProductosCursos = null;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://collage-reminder-32e34-default-rtdb.firebaseio.com/");
 
@@ -41,6 +46,7 @@ public class addNoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
+
         ///Para base de datos
         try {
             cargarDatos();
@@ -189,6 +195,8 @@ public class addNoteActivity extends AppCompatActivity {
             mostrarMsgToast(e.getMessage());
         }
     }
+
+
 
 
 }
