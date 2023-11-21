@@ -27,7 +27,8 @@ public class TareaAdapter extends ArrayAdapter<Tarea> {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_tarea, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.nivelView = convertView.findViewById(R.id.btnAlert);
+            viewHolder.nivelView = convertView.findViewById(R.id.Alert);
+            viewHolder.textViewHora = convertView.findViewById(R.id.textViewHora);
             viewHolder.textViewContenido = convertView.findViewById(R.id.textViewContenido);
             convertView.setTag(viewHolder);
         } else {
@@ -39,6 +40,7 @@ public class TareaAdapter extends ArrayAdapter<Tarea> {
 
 
         if (tarea != null) {
+            viewHolder.textViewHora.setText(tarea.getHora());
             viewHolder.textViewContenido.setText(tarea.getContenido());
             if ("amarillo".equals(tarea.getNivel())){
                 viewHolder.nivelView.setImageResource(R.drawable.amarillo);
@@ -51,13 +53,15 @@ public class TareaAdapter extends ArrayAdapter<Tarea> {
             }else {
                 viewHolder.nivelView.setImageResource(R.drawable.azul);
             }
+
+
         }
 
         return convertView;
     }
 
     private static class ViewHolder {
-        TextView textViewContenido;
+        TextView textViewContenido, textViewHora;
         ImageView nivelView;
     }
 }

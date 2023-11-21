@@ -9,28 +9,31 @@
     tools:context=".addNoteActivity">
 
 
-    <EditText
-        android:id="@+id/editTextTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Titulo"/>
-    <EditText
-        android:id="@+id/editTextTask"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tarea" />
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agregar"
+        android:text="Nueva Nota"
         android:id="@+id/btnAddnote"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="120dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mis notas"
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"/>
 
     <ListView
         android:id="@+id/listViewTasks"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="3dp"/>
 
 
 

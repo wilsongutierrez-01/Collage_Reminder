@@ -4,7 +4,7 @@ public class Tarea {
     private String contenido;
     private long fecha;
     private String nivel;
-
+    private String hora;
 
 
     public Tarea() {
@@ -32,5 +32,13 @@ public class Tarea {
 
     public void setNivel(String nivel) {
         this.nivel = nivel;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }

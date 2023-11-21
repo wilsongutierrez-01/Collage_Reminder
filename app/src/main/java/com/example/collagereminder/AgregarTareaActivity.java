@@ -57,6 +57,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
     private CalendarView calendarView;
     private Button guardarButton;
 
+    private String hora, minuto, tiempo;
     private long timestamp, currentTimesTamp;
 
 
@@ -73,15 +74,8 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
         NOTIFICATION_IDR = generateRandomIntId();
 
-        Button myNotificationButton = findViewById(R.id.btnNotification);
         createChannel();
-        myNotificationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scheduleNotification();
-                mostrarMsgToast(String.valueOf(timestamp - Calendar.getInstance().getTimeInMillis()));
-            }
-        });
+
         // Inicializa OneSignal
         Calendar time = Calendar.getInstance();
         currentTimesTamp = time.getTimeInMillis()/1000;
@@ -157,6 +151,9 @@ public class AgregarTareaActivity extends AppCompatActivity {
                                     selectedHour = hourOfDay;
                                     selectedMinute = minute;
                                     if (selectedYear !=0 && selectedMonth !=0 && selectedDay !=0){
+                                        hora = String.valueOf(hourOfDay);
+                                        minuto = String.valueOf(minute);
+                                        tiempo = hora + ":" + minuto;
                                         c.set(Calendar.DAY_OF_YEAR,selectedYear);
                                         c.set(Calendar.MONTH,selectedMonth);
                                         c.set(Calendar.DAY_OF_MONTH,selectedDay);
@@ -194,6 +191,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
 
                         Map<String, String> tareas = new HashMap<>();
+                        tareas.put("hora", tiempo);
                         tareas.put("tarea", tarea);
                         tareas.put("nivel", nivel);
                         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

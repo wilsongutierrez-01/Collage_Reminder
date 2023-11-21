@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ModificarEliminarTarjeta">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/layoutTitulo"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:background="#B4B4B3">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-Modifica o elimina tu tarjeta-"
+                    android:textSize="20dp"
+                    android:layout_marginTop="15dp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/aprendizaje"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_below="@+id/layoutTitulo"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/lblPregunta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pregunta"
+                    android:textSize="30dp"/>
+
+                <EditText
+                    android:id="@+id/txtPreguntaModificar"
+                    android:layout_below="@+id/lblPregunta"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#B4B4B3"
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"/>
+
+                <TextView
+                    android:id="@+id/lblrespuesta"
+                    android:layout_below="@+id/txtPreguntaModificar"
+                    android:layout_marginTop="29dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Respuesta"
+                    android:textSize="30dp"/>
+
+                <EditText
+                    android:id="@+id/txtRespuestaModificar"
+                    android:layout_below="@+id/lblrespuesta"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#B4B4B3"
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"/>
+
+                <LinearLayout
+                    android:layout_below="@+id/txtRespuestaModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btnModificarTarjeta"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Modificar Tarjeta"/>
+                    <Button
+                        android:id="@+id/btnEliminarTarjeta"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Eliminar Tarjeta"/>
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

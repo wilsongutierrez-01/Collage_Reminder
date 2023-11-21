@@ -51,6 +51,7 @@ public class PreguntasActivity extends AppCompatActivity {
             if (preguntaKey != null){
                 if (!pregunta.isEmpty() && !respuesta.isEmpty()){
                     Map<String,String> preguntas = new HashMap<>();
+                    preguntas.put("key", preguntaKey);
                     preguntas.put("pregunta", pregunta);
                     preguntas.put("respuesta", respuesta);
 

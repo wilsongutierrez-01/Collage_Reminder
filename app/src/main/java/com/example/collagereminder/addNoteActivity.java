@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -53,67 +54,43 @@ public class addNoteActivity extends AppCompatActivity {
         }catch (Exception e){
             mostrarMsgToast(e.getMessage()   );
         }
+        listViewTasks = findViewById(R.id.listViewTasks);
+        listViewTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // Obtener el objeto Nota correspondiente a la posición i
+                Nota notaSeleccionada = listaDeNotas.get(i);
 
+                // Aquí puedes acceder a los datos de la Nota seleccionada
+                String id = notaSeleccionada.getId();
+                String titulo = notaSeleccionada.getTitle();
+                String contenido = notaSeleccionada.getContent();
+
+                // Puedes hacer lo que desees con estos datos, por ejemplo, pasarlos a otra actividad
+                // o mostrarlos en un Toast
+                //Toast.makeText(getApplicationContext(), "ID: " + id + "\nTítulo: " + titulo + "\nContenido: " + contenido, Toast.LENGTH_SHORT).show();
+               Intent modificar = new Intent(getApplicationContext(), ModificarEliminarNota.class);
+                modificar.putExtra("id",id);
+                modificar.putExtra("titulo",titulo);
+                modificar.putExtra("contenido", contenido);
+                startActivity(modificar);
+            }
+        });
         try {
             //Variable for user
             final String user;
             //cargar boton para agregar notas
             final Button btnNota = findViewById(R.id.btnAddnote);
 
-            //agregar la base de datos
-
-            //Cargamos el text de tarea
-            final EditText nota = findViewById(R.id.editTextTask);
-
-            final EditText title = findViewById(R.id.editTextTitle);
 
             btnNota.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                    userName = sharedPreferences.getString("userName", "");
-                    final String tituloNota = title.getText().toString();
-                    final String nuevaNota = nota.getText().toString();
+                  Intent add = new Intent(getApplicationContext(),NuevaNota.class);
+                  startActivity(add);
 
-                    databaseReference.child("nuevasNotas").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            try {
-
-                                DatabaseReference userNotesReference = databaseReference.child("nuevasNotas").child(userName);
-                                String notaKey = userNotesReference.push().getKey();
-
-                                if (notaKey != null) {
-
-                                    if(!tituloNota.isEmpty() && !nuevaNota.isEmpty()){
-                                        // Guarda la nueva nota con la clave generada en el nodo "notas"
-                                        Map<String,String> data = new HashMap<>();
-                                        data.put("titulo", tituloNota);
-                                        data.put("tarea", nuevaNota);
-
-                                        userNotesReference.child(notaKey).setValue(data);
-                                        mostrarMsgToast("Nota agregada");
-                                    }else {
-                                        mostrarMsgToast("Por favor ingrese datos");
-                                    }
-
-                                } else {
-                                    mostrarMsgToast("Error al agregar la nota");
-                                }
-
-                            }catch (Exception e){
-                                mostrarMsgToast(e.getMessage());
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
 
                 }
             });
@@ -160,10 +137,12 @@ public class addNoteActivity extends AppCompatActivity {
 
 
                         if (notaData != null) {
+                            String key = notaData.get("key");
                             String titulo = notaData.get("titulo");
                             String notaContenido = notaData.get("tarea");
 
                             Nota nota = new Nota();
+                            nota.setId(key);
                             nota.setTitle(titulo);
                             nota.setContent(notaContenido);
                             listaDeNotas.add(nota);

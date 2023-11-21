@@ -37,6 +37,12 @@
         <activity
             android:name=".Estres"
             android:exported="false" />
+        <activity android:name=".NuevaNota"
+            android:exported="false"/>
+        <activity android:name=".ModificarEliminarNota"
+            android:exported="false"/>
+        <activity android:name=".ModificarEliminarTarjeta"
+            android:exported="true"/>
         <activity
             android:name=".AgregarTareaActivity"
             android:exported="false" />

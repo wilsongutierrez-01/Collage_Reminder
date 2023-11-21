@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +43,27 @@ public class VerPreguntas extends AppCompatActivity {
         cargarElementos();
         cargarDatos();
 
+        listViewPreguntas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // Obtener el objeto Nota correspondiente a la posición i
+                Pregunta tarjetaSeleccionada = listaDePreguntas.get(i);
+
+                // Aquí puedes acceder a los datos de la Nota seleccionada
+                String id = tarjetaSeleccionada.getId();
+                String pregunta = tarjetaSeleccionada.getPregunta();
+                String respuesta = tarjetaSeleccionada.getRespuesta();
+
+                // Puedes hacer lo que desees con estos datos, por ejemplo, pasarlos a otra actividad
+                // o mostrarlos en un Toast
+                //Toast.makeText(getApplicationContext(), "ID: " + id + "\nTítulo: " + titulo + "\nContenido: " + contenido, Toast.LENGTH_SHORT).show();
+                Intent modificar = new Intent(getApplicationContext(), ModificarEliminarTarjeta.class);
+                modificar.putExtra("id",id);
+                modificar.putExtra("pregunta",pregunta);
+                modificar.putExtra("contenido", respuesta);
+                startActivity(modificar);
+            }
+        });
         btnTarjeta.setOnClickListener(view -> {
             Intent agregar = new Intent(getApplicationContext(), PreguntasActivity.class);
             startActivity(agregar);
@@ -82,10 +105,12 @@ public class VerPreguntas extends AppCompatActivity {
 
 
                         if (preguntaData != null) {
+                            String id = preguntaData.get("key");
                             String preguntas = preguntaData.get("pregunta");
                             String respuestas = preguntaData.get("respuesta");
 
                             Pregunta pregunta = new Pregunta();
+                            pregunta.setId(id);
                             pregunta.setPregunta(preguntas);
                             pregunta.setRespuesta(respuestas);
                             listaDePreguntas.add(pregunta);

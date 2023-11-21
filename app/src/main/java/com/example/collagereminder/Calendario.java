@@ -119,10 +119,12 @@ public class Calendario extends AppCompatActivity implements CalendarView.OnDate
 
                             try {
                                 if (taskData != null) {
+                                    String hora = taskData.get("hora");
                                     String nivel = taskData.get("nivel");
                                     String tarea = taskData.get("tarea");
 
                                     Tarea tareas = new Tarea();
+                                    tareas.setHora(hora);
                                     tareas.setContenido(tarea);
                                     tareas.setNivel(nivel);
                                     listaDeTareas.add(tareas);
