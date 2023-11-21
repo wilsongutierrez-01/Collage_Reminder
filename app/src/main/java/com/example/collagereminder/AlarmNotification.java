@@ -38,7 +38,7 @@ public class AlarmNotification extends BroadcastReceiver {
         if (manager != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel channel = new NotificationChannel(AgregarTareaActivity.MY_CHANNEL_ID, "MySuperChannel", NotificationManager.IMPORTANCE_DEFAULT);
-                channel.setDescription("SUSCRIBETE");
+                channel.setDescription("COLLEGEREMINDER");
                 manager.createNotificationChannel(channel);
             }
 

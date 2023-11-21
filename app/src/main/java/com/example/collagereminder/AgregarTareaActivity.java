@@ -97,6 +97,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
 
         try {
+            //Boton para elegir fecha
             pickDateBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -128,6 +129,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
             mostrarMsgToast(e.getMessage());
         }
         try {
+            //Boton para elegir la hora
             pickTimeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -160,6 +162,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
                                         c.set(Calendar.HOUR_OF_DAY,hourOfDay);
                                         c.set(Calendar.MINUTE, minute);
 
+                                        //Variable que sirve para poner la alarma
                                         timestamp = c.getTimeInMillis();
 
                                     }else{
@@ -180,6 +183,7 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
         guardarButton.setOnClickListener(v -> {
             String tarea = tareaEditText.getText().toString();
+            //Sirve para sacar el texto del spiner
             int selectedIndex = nivelColor.getSelectedItemPosition();
             String nivel = (String) nivelColor.getItemAtPosition(selectedIndex);
 
@@ -212,60 +216,14 @@ public class AgregarTareaActivity extends AppCompatActivity {
                     }
 
 
-                    /*try {
-
-                        // Guardar la tarea en la fecha seleccionada (selectedYear, selectedMonth, selectedDay)
-
-                        // Marcar el día seleccionado en el CalendarView
-                        calendarView.setDate(getDateInMillisC(selectedYear, selectedMonth, selectedDay), true, true);
-                        long dateTimeInMillis = getDateInMillis(selectedYear, selectedMonth, selectedDay, selectedHour, selectedMinute);
-                        // long timeStap = getTimestamp(selectedYear,selectedMonth,selectedDay,selectedHour,selectedMinute);
-                        // Guardar la tarea en la fecha seleccionada en Firebase
-
-                        try {
-                            long xd = timestamp - currentTimesTamp;
-                            Map<String, String> data = new HashMap<>();
-                            data.put("tarea", "ok");
-                            OneSignal.getUser().addTags(data);
-                            mostrarMsgToast(String.valueOf(xd));
-                    }catch (Exception e){
-                        mostrarMsgToast(e.getMessage());
-                    }
-
-                    // Opcionalmente, puedes regresar a la actividad anterior
-                    finish();
-
-                }catch (Exception e){
-                    mostrarMsgToast(e.getMessage());
-                }*/
 
             }
         });
     }
-    // Método para obtener la fecha en milisegundos a partir del año, mes y día
-    private long getDateInMillis(int year, int month, int day, int hour, int minute) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day, hour, minute);
-        return calendar.getTimeInMillis();
-    }
 
-    // Método para guardar la tarea en Firebase
-    private void guardarTareaEnFirebase(HashMap<String, String> tarea) {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        final String userName = sharedPreferences.getString("userName", "");
-        String fechaSeleccionada = selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay;
-        String uid = userName;
-        String ruta = "Tareas/" + uid + "/" + fechaSeleccionada;
 
-        // Guardar la tarea en Firebase
-        DatabaseReference nuevaTareaRef = databaseReference.child(ruta).push();
-        nuevaTareaRef.child("contenido").setValue(tarea);
-    }
-    public long getTimestamp(int year, int month, int day, int hour, int minute) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day, hour, minute);
-        return calendar.getTimeInMillis() / 1000L; // Dividir por 1000 para obtener el timestamp en segundos
-    }
+
+
 
 
     private void mostrarMsgToast(String msg){

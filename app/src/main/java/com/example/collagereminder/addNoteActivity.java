@@ -106,6 +106,8 @@ public class addNoteActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
     }
 
+    //Para cargar los datos desde firebase
+
     private void cargarDatos (){
         //userId = mAuth.getUid();
 
